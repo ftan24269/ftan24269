@@ -5,5 +5,7 @@ permalink: /kontakt/
 ---
 
   <div class="entry">
+
+    [Kontaktform]
   </div>
 

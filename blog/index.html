@@ -1,0 +1,51 @@
+---
+layout: default
+title: Blog
+---
+<h2>Blog</h2>
+
+<div class="posts">
+  {% for post in paginator.posts %}
+    <article class="post">
+
+      <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
+
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" >Weiterlesen</a>
+    </article>
+  {% endfor %}
+</div>
+
+<!-- Pagination links -->
+<div class="pagination" style="text-align:center;">
+  {% if paginator.previous_page %}
+    <a href="{{ site.baseurl }}/blog/" class="previous" style="text-align:left;">&lt;&lt;</a>
+    <a href="{{ paginator.previous_page_path }}" class="previous" style="text-align:left;">&lt;</a>
+  {% endif %}
+  <span class="page_number" style="font-weight: bold;">Seite {{ paginator.page }} von {{ paginator.total_pages }}</span>
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path }}" class="next" style="text-align:right;">&gt;</a>
+    <a href="{{ site.baseurl }}/blog/page{{ paginator.total_pages }}/" class="next" style="text-align:right;">&gt;&gt;</a>
+  {% endif %}
+</div>
+<div class="pagination" style="text-align:center;">
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <b>{{ page }}</b>
+    {% elsif page == 1 %}
+    <!--
+      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+    -->
+      <a href="{{ site.baseurl }}/blog/">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  {% endfor %}
+
+</div>
+
+
+

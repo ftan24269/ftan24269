@@ -1,5 +1,36 @@
 ---
 layout: default
+max_num_of_posts_here: 3
+title: domain.de - Blog Beispiel
 ---
 
-Index
+<div>
+  <h2>Willkommen zu domain.de</h2>
+</div>
+<div>
+    domain.de ist ein unabhängiger Blog zum Thema x.
+
+    <h3>Weiterführende Link:</h3>
+    <div><a href="/page1/">Page 1</a></div>
+    <div><a href="/page2/">Page 2</a></div>
+    <div><a href="/page3/">Page 3</a></div>
+</div>
+
+<h2>Aktuelle Blog-Artikel</h2>
+
+<div class="posts">
+<!-- {% increment my_number %} -->
+  {% for post in site.posts %}
+    {% if my_number <= page.max_num_of_posts_here %}
+<!-- {% increment my_number %} -->
+    <div>
+      <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+<!--
+      <div class="excerpt">
+        {{ post.excerpt }}
+      </div>
+-->
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
